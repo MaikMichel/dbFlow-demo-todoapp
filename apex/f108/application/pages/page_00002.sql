@@ -1,0 +1,306 @@
+prompt --application/pages/page_00002
+begin
+--   Manifest
+--     PAGE: 00002
+--   Manifest End
+wwv_flow_imp.component_begin (
+ p_version_yyyy_mm_dd=>'2022.10.07'
+,p_release=>'22.2.2'
+,p_default_workspace_id=>28800139215567867
+,p_default_application_id=>108
+,p_default_id_offset=>29020743734719622
+,p_default_owner=>'TODO'
+);
+wwv_flow_imp_page.create_page(
+ p_id=>2
+,p_name=>'Edit Task'
+,p_alias=>'EDIT-TASK'
+,p_page_mode=>'MODAL'
+,p_first_item=>'AUTO_FIRST_ITEM'
+,p_autocomplete_on_off=>'OFF'
+,p_page_template_options=>'#DEFAULT#'
+,p_dialog_css_classes=>'oc-dlg-tasks'
+,p_protection_level=>'C'
+,p_page_component_map=>'16'
+,p_last_updated_by=>'WSADMIN'
+,p_last_upd_yyyymmddhh24miss=>'20230629203358'
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(44530388167209531)
+,p_plug_name=>'Button Container'
+,p_region_template_options=>'#DEFAULT#'
+,p_plug_template=>wwv_flow_imp.id(44665108035184448)
+,p_plug_display_sequence=>10
+,p_include_in_reg_disp_sel_yn=>'Y'
+,p_plug_display_point=>'REGION_POSITION_03'
+,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
+,p_attribute_01=>'N'
+,p_attribute_02=>'HTML'
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(44530492329209532)
+,p_plug_name=>'Content'
+,p_region_template_options=>'#DEFAULT#:t-Region--removeHeader js-removeLandmark:t-Region--noBorder:t-Region--scrollBody'
+,p_plug_template=>wwv_flow_imp.id(44722703053184468)
+,p_plug_display_sequence=>10
+,p_include_in_reg_disp_sel_yn=>'Y'
+,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
+,p_attribute_01=>'N'
+,p_attribute_02=>'HTML'
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(44530772907209535)
+,p_button_sequence=>10
+,p_button_plug_id=>wwv_flow_imp.id(44530388167209531)
+,p_button_name=>'CLOSE'
+,p_button_action=>'DEFINED_BY_DA'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_imp.id(44795544480184502)
+,p_button_is_hot=>'Y'
+,p_button_image_alt=>'Close'
+,p_button_position=>'CLOSE'
+,p_warn_on_unsaved_changes=>null
+,p_button_condition=>'P2_TSK_ID'
+,p_button_condition_type=>'ITEM_IS_NOT_NULL'
+,p_button_css_classes=>'oc-btn-close'
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(44530930552209536)
+,p_button_sequence=>20
+,p_button_plug_id=>wwv_flow_imp.id(44530388167209531)
+,p_button_name=>'CANCEL'
+,p_button_action=>'SUBMIT'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_imp.id(44795544480184502)
+,p_button_image_alt=>'Cancel'
+,p_button_position=>'CLOSE'
+,p_button_css_classes=>'oc-btn-cancel'
+,p_button_cattributes=>'style="&P2_CANCEL_STYLE."'
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(44530712400209534)
+,p_button_sequence=>10
+,p_button_plug_id=>wwv_flow_imp.id(44530388167209531)
+,p_button_name=>'SAVE'
+,p_button_action=>'SUBMIT'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_imp.id(44795544480184502)
+,p_button_is_hot=>'Y'
+,p_button_image_alt=>'Save'
+,p_button_position=>'CREATE'
+,p_button_condition=>'P2_TSK_ID'
+,p_button_condition_type=>'ITEM_IS_NOT_NULL'
+,p_button_css_classes=>'oc-btn-ok'
+,p_button_cattributes=>'style="display:none;'
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(44530601104209533)
+,p_button_sequence=>20
+,p_button_plug_id=>wwv_flow_imp.id(44530388167209531)
+,p_button_name=>'CREATE'
+,p_button_action=>'SUBMIT'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_imp.id(44795544480184502)
+,p_button_is_hot=>'Y'
+,p_button_image_alt=>'Create'
+,p_button_position=>'CREATE'
+,p_button_condition=>'P2_TSK_ID'
+,p_button_condition_type=>'ITEM_IS_NULL'
+,p_button_css_classes=>'oc-btn-ok'
+,p_button_cattributes=>'style="display:none;'
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(44531005685209537)
+,p_button_sequence=>10
+,p_button_plug_id=>wwv_flow_imp.id(44530388167209531)
+,p_button_name=>'DELETE'
+,p_button_action=>'SUBMIT'
+,p_button_template_options=>'#DEFAULT#:t-Button--danger:t-Button--simple:t-Button--gapLeft'
+,p_button_template_id=>wwv_flow_imp.id(44795544480184502)
+,p_button_image_alt=>'Delete'
+,p_button_position=>'DELETE'
+,p_confirm_message=>'Are you sure, you want to delete this task?'
+,p_confirm_style=>'danger'
+,p_button_condition=>'P2_TSK_ID'
+,p_button_condition_type=>'ITEM_IS_NOT_NULL'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(44531128445209538)
+,p_name=>'P2_TSK_ID'
+,p_item_sequence=>10
+,p_item_plug_id=>wwv_flow_imp.id(44530492329209532)
+,p_display_as=>'NATIVE_HIDDEN'
+,p_attribute_01=>'Y'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(44531172171209539)
+,p_name=>'P2_TSK_TITLE'
+,p_item_sequence=>30
+,p_item_plug_id=>wwv_flow_imp.id(44530492329209532)
+,p_prompt=>'Title'
+,p_display_as=>'NATIVE_TEXT_FIELD'
+,p_cSize=>30
+,p_field_template=>wwv_flow_imp.id(44794414513184500)
+,p_item_template_options=>'#DEFAULT#'
+,p_attribute_01=>'Y'
+,p_attribute_02=>'N'
+,p_attribute_04=>'TEXT'
+,p_attribute_05=>'BOTH'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(44531279707209540)
+,p_name=>'P2_TSK_DESCRIPTION'
+,p_item_sequence=>40
+,p_item_plug_id=>wwv_flow_imp.id(44530492329209532)
+,p_prompt=>'Description'
+,p_display_as=>'NATIVE_MARKDOWN_EDITOR'
+,p_begin_on_new_line=>'N'
+,p_begin_on_new_field=>'N'
+,p_field_template=>wwv_flow_imp.id(44793139420184499)
+,p_item_template_options=>'#DEFAULT#'
+,p_attribute_01=>'SIMPLE'
+,p_attribute_02=>'Y'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(44531359586209541)
+,p_name=>'P2_TSK_DONE_YN'
+,p_item_sequence=>60
+,p_item_plug_id=>wwv_flow_imp.id(44530492329209532)
+,p_prompt=>'Done'
+,p_display_as=>'NATIVE_YES_NO'
+,p_field_template=>wwv_flow_imp.id(44793139420184499)
+,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--xlarge'
+,p_attribute_01=>'N'
+,p_attribute_02=>'Y'
+,p_attribute_03=>'Done'
+,p_attribute_04=>'N'
+,p_attribute_05=>'Open'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(44531544187209543)
+,p_name=>'P2_CANCEL_STYLE'
+,p_item_sequence=>20
+,p_item_plug_id=>wwv_flow_imp.id(44530492329209532)
+,p_source=>'case when :P2_TSK_ID is not null then ''display:none;'' else '''' end'
+,p_source_type=>'EXPRESSION'
+,p_source_language=>'PLSQL'
+,p_display_as=>'NATIVE_HIDDEN'
+,p_attribute_01=>'Y'
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(44532321329209550)
+,p_name=>'OnClick - cancel Dialog'
+,p_event_sequence=>10
+,p_triggering_element_type=>'JQUERY_SELECTOR'
+,p_triggering_element=>'.oc-btn-cancel, .oc-btn-close'
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'click'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(44532428715209551)
+,p_event_id=>wwv_flow_imp.id(44532321329209550)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_DIALOG_CANCEL'
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(44533216499209559)
+,p_name=>'OnLoad - set title'
+,p_event_sequence=>20
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'ready'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(44533341030209560)
+,p_event_id=>wwv_flow_imp.id(44533216499209559)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>'apex.util.getTopApex().jQuery(".oc-dlg-tasks .ui-dialog-title").html("Create a task");'
+,p_client_condition_type=>'NULL'
+,p_client_condition_element=>'P2_TSK_ID'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(44533389615209561)
+,p_event_id=>wwv_flow_imp.id(44533216499209559)
+,p_event_result=>'TRUE'
+,p_action_sequence=>20
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>'apex.util.getTopApex().jQuery(".oc-dlg-tasks .ui-dialog-title").html("Edit task");'
+,p_client_condition_type=>'NOT_NULL'
+,p_client_condition_element=>'P2_TSK_ID'
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(29785485413852101)
+,p_name=>'New'
+,p_event_sequence=>30
+,p_triggering_element_type=>'ITEM'
+,p_triggering_element=>'P2_TSK_DUE_DATE'
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'change'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(29785560709852102)
+,p_event_id=>wwv_flow_imp.id(29785485413852101)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>'somethingChanged();'
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(44532532936209552)
+,p_process_sequence=>10
+,p_process_point=>'AFTER_SUBMIT'
+,p_process_type=>'NATIVE_PLSQL'
+,p_process_name=>'Create or Update task'
+,p_process_sql_clob=>'apx_tasks_util.save_task_on_P2;'
+,p_process_clob_language=>'PLSQL'
+,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+,p_process_when=>'SAVE,CREATE,P2_TSK_TITLE'
+,p_process_when_type=>'REQUEST_IN_CONDITION'
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(44533617218209563)
+,p_process_sequence=>20
+,p_process_point=>'AFTER_SUBMIT'
+,p_process_type=>'NATIVE_PLSQL'
+,p_process_name=>'DELETE'
+,p_process_sql_clob=>'apx_tasks_util.delete_row_on_P2;'
+,p_process_clob_language=>'PLSQL'
+,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+,p_process_when=>'DELETE'
+,p_process_when_type=>'REQUEST_EQUALS_CONDITION'
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(44532551966209553)
+,p_process_sequence=>30
+,p_process_point=>'AFTER_SUBMIT'
+,p_process_type=>'NATIVE_CLOSE_WINDOW'
+,p_process_name=>'Close Dialog'
+,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+,p_process_when=>':REQUEST in (''CREATE'', ''SAVE'', ''DELETE'', ''P2_TSK_TITLE'') and not apex_error.have_errors_occurred'
+,p_process_when_type=>'EXPRESSION'
+,p_process_when2=>'PLSQL'
+,p_process_success_message=>'&APP_DLG_CLOSE_MSG.'
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(44532708072209554)
+,p_process_sequence=>10
+,p_process_point=>'BEFORE_HEADER'
+,p_process_type=>'NATIVE_PLSQL'
+,p_process_name=>'Fetch'
+,p_process_sql_clob=>'apx_tasks_util.fetch_row_on_P2;'
+,p_process_clob_language=>'PLSQL'
+,p_process_when=>'P2_TSK_ID'
+,p_process_when_type=>'ITEM_IS_NOT_NULL'
+);
+wwv_flow_imp.component_end;
+end;
+/
