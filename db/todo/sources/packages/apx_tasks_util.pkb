@@ -24,6 +24,7 @@ create or replace package body apx_tasks_util is
     apex_util.set_session_state('P2_TSK_TITLE',          l_tsk_row.tsk_title);
     apex_util.set_session_state('P2_TSK_DESCRIPTION',    l_tsk_row.tsk_description);
     apex_util.set_session_state('P2_TSK_DONE_YN',        l_tsk_row.tsk_done_yn);
+    apex_util.set_session_state('P2_TSK_DUE_DATE',       l_tsk_row.tsk_due_date);
   end;
 
   procedure save_task_on_P2 is
@@ -38,6 +39,7 @@ create or replace package body apx_tasks_util is
     l_tsk_row.tsk_title          := apex_util.get_session_state('P2_TSK_TITLE');
     l_tsk_row.tsk_description    := apex_util.get_session_state('P2_TSK_DESCRIPTION');
     l_tsk_row.tsk_done_yn        := apex_util.get_session_state('P2_TSK_DONE_YN');
+    l_tsk_row.tsk_due_date       := apex_util.get_session_state('P2_TSK_DUE_DATE');
 
     if l_tsk_row.tsk_id is null then
       insert into tasks values l_tsk_row  return tsk_id into l_tsk_row.tsk_id;
