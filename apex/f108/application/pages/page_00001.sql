@@ -23,7 +23,7 @@ wwv_flow_imp_page.create_page(
 ,p_protection_level=>'C'
 ,p_page_component_map=>'13'
 ,p_last_updated_by=>'WSADMIN'
-,p_last_upd_yyyymmddhh24miss=>'20230629203621'
+,p_last_upd_yyyymmddhh24miss=>'20230704193304'
 );
 wwv_flow_imp_page.create_report_region(
  p_id=>wwv_flow_imp.id(44529889303209526)
@@ -38,7 +38,7 @@ wwv_flow_imp_page.create_report_region(
 ,p_source_type=>'NATIVE_SQL_REPORT'
 ,p_query_type=>'SQL'
 ,p_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'select tsk_id, tsk_title, tsk_description, tsk_done_yn',
+'select tsk_id, tsk_title, tsk_description, tsk_done_yn, tsk_due_date',
 '  from tasks'))
 ,p_ajax_enabled=>'Y'
 ,p_lazy_loading=>true
@@ -101,6 +101,17 @@ wwv_flow_imp_page.create_report_columns(
 ,p_derived_column=>'N'
 ,p_include_in_export=>'Y'
 );
+wwv_flow_imp_page.create_report_columns(
+ p_id=>wwv_flow_imp.id(29785621942852103)
+,p_query_column_id=>5
+,p_column_alias=>'TSK_DUE_DATE'
+,p_column_display_sequence=>40
+,p_column_heading=>'Due Date'
+,p_use_as_row_header=>'N'
+,p_disable_sort_column=>'N'
+,p_derived_column=>'N'
+,p_include_in_export=>'Y'
+);
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(44829497095184561)
 ,p_plug_name=>'dbFlow - ToDo Demo'
@@ -145,6 +156,27 @@ wwv_flow_imp_page.create_page_button(
 ,p_icon_css_classes=>'fa-plus'
 );
 wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(29785820582852105)
+,p_name=>'P1_DONE_YN'
+,p_source_data_type=>'VARCHAR2'
+,p_item_sequence=>20
+,p_item_plug_id=>wwv_flow_imp.id(44533708247209564)
+,p_prompt=>'Done'
+,p_source=>'TSK_DONE_YN'
+,p_source_type=>'FACET_COLUMN'
+,p_display_as=>'NATIVE_CHECKBOX'
+,p_lov=>'STATIC:Done;Y,Open;N'
+,p_item_template_options=>'#DEFAULT#'
+,p_fc_show_label=>true
+,p_fc_compute_counts=>true
+,p_fc_show_counts=>true
+,p_fc_zero_count_entries=>'D'
+,p_fc_filter_values=>false
+,p_fc_sort_by_top_counts=>true
+,p_fc_show_selected_first=>false
+,p_suggestions_type=>'DYNAMIC'
+);
+wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(44533816829209565)
 ,p_name=>'P1_SEARCH'
 ,p_item_sequence=>10
@@ -168,11 +200,23 @@ wwv_flow_imp_page.create_page_da_event(
 ,p_bind_event_type=>'apexafterclosedialog'
 );
 wwv_flow_imp_page.create_page_da_action(
- p_id=>wwv_flow_imp.id(44532857516209556)
+ p_id=>wwv_flow_imp.id(29785943569852106)
 ,p_event_id=>wwv_flow_imp.id(44532823284209555)
 ,p_event_result=>'TRUE'
 ,p_action_sequence=>10
 ,p_execute_on_page_init=>'N'
+,p_name=>'refresh filter'
+,p_action=>'NATIVE_REFRESH'
+,p_affected_elements_type=>'REGION'
+,p_affected_region_id=>wwv_flow_imp.id(44533708247209564)
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(44532857516209556)
+,p_event_id=>wwv_flow_imp.id(44532823284209555)
+,p_event_result=>'TRUE'
+,p_action_sequence=>20
+,p_execute_on_page_init=>'N'
+,p_name=>'refresh tasks'
 ,p_action=>'NATIVE_REFRESH'
 ,p_affected_elements_type=>'REGION'
 ,p_affected_region_id=>wwv_flow_imp.id(44529889303209526)
